@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{da05a25a-9f21-403f-bd35-760d9171970e}</ItemsProjectGuid>
+    <ItemsProjectGuid>{85fc9f95-00d4-4f96-8989-f7c0527fee59}</ItemsProjectGuid>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,12 +14,9 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)AT28C256.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)eeprom_lib.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)eeprom_lib.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AT28C256.h" />
   </ItemGroup>
 </Project>
