@@ -1,0 +1,158 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Timer:NE555P U1
+U 1 1 60ADFBCB
+P 2100 1650
+F 0 "U1" H 2644 1696 50  0000 L CNN
+F 1 "NE555P" H 2644 1605 50  0000 L CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 2750 1250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/ne555.pdf" H 2950 1250 50  0001 C CNN
+	1    2100 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 60AE1EBB
+P 2100 700
+F 0 "#PWR?" H 2100 550 50  0001 C CNN
+F 1 "+5V" H 2115 873 50  0000 C CNN
+F 2 "" H 2100 700 50  0001 C CNN
+F 3 "" H 2100 700 50  0001 C CNN
+	1    2100 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60AE2DB2
+P 2100 2150
+F 0 "#PWR?" H 2100 1900 50  0001 C CNN
+F 1 "GND" H 2105 1977 50  0000 C CNN
+F 2 "" H 2100 2150 50  0001 C CNN
+F 3 "" H 2100 2150 50  0001 C CNN
+	1    2100 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 2050 2100 2150
+Wire Wire Line
+	2100 700  2100 1200
+NoConn ~ 1900 1250
+Wire Wire Line
+	1600 1550 1600 1200
+Wire Wire Line
+	1600 1200 2100 1200
+Connection ~ 2100 1200
+Wire Wire Line
+	2100 1200 2100 1250
+$Comp
+L Device:R_US R1
+U 1 1 60AE8B76
+P 1300 1400
+F 0 "R1" H 1368 1446 50  0000 L CNN
+F 1 "10K" H 1368 1355 50  0000 L CNN
+F 2 "" V 1340 1390 50  0001 C CNN
+F 3 "~" H 1300 1400 50  0001 C CNN
+	1    1300 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 1200 1600 1200
+Connection ~ 1600 1200
+Wire Wire Line
+	1300 1550 1300 1650
+Wire Wire Line
+	1300 1650 1600 1650
+Wire Wire Line
+	1300 1200 1300 1250
+Wire Wire Line
+	1600 1750 1600 1850
+$Comp
+L Device:R_Variable_US R2
+U 1 1 60AECE96
+P 1300 1800
+F 0 "R2" H 1428 1846 50  0000 L CNN
+F 1 "1M" H 1428 1755 50  0000 L CNN
+F 2 "" V 1230 1800 50  0001 C CNN
+F 3 "~" H 1300 1800 50  0001 C CNN
+	1    1300 1800
+	1    0    0    -1  
+$EndComp
+Connection ~ 1300 1650
+Wire Wire Line
+	1300 1950 1600 1950
+Wire Wire Line
+	1600 1950 1600 1850
+Connection ~ 1600 1850
+$Comp
+L Device:CP C1
+U 1 1 60AEDE54
+P 1300 2100
+F 0 "C1" H 1418 2146 50  0000 L CNN
+F 1 "1uF" H 1418 2055 50  0000 L CNN
+F 2 "" H 1338 1950 50  0001 C CNN
+F 3 "~" H 1300 2100 50  0001 C CNN
+	1    1300 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 1300 1950
+$Comp
+L power:GND #PWR?
+U 1 1 60AEE2B5
+P 1300 2250
+F 0 "#PWR?" H 1300 2000 50  0001 C CNN
+F 1 "GND" H 1305 2077 50  0000 C CNN
+F 2 "" H 1300 2250 50  0001 C CNN
+F 3 "" H 1300 2250 50  0001 C CNN
+	1    1300 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 60AEF087
+P 2400 1200
+F 0 "C2" V 2148 1200 50  0000 C CNN
+F 1 "10nF" V 2239 1200 50  0000 C CNN
+F 2 "" H 2438 1050 50  0001 C CNN
+F 3 "~" H 2400 1200 50  0001 C CNN
+	1    2400 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60AF08DB
+P 2550 1200
+F 0 "#PWR?" H 2550 950 50  0001 C CNN
+F 1 "GND" H 2555 1027 50  0000 C CNN
+F 2 "" H 2550 1200 50  0001 C CNN
+F 3 "" H 2550 1200 50  0001 C CNN
+	1    2550 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 1200 2250 1200
+$Comp
+L Switch:SW_DPDT_x2 SW?
+U 1 1 60AF22A8
+P 3250 1700
+F 0 "SW?" H 3250 1985 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 3250 1894 50  0000 C CNN
+F 2 "" H 3250 1700 50  0001 C CNN
+F 3 "~" H 3250 1700 50  0001 C CNN
+	1    3250 1700
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
