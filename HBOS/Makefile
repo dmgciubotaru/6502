@@ -25,3 +25,7 @@ main.s : main.c
 
 clean:
 	@$(DEL) main 2>$(NULLDEV)
+	@$(DEL) main.o 2>$(NULLDEV)
+	@$(DEL) main.s 2>$(NULLDEV)
+	@$(DEL) main.map 2>$(NULLDEV)
+	@$(DEL) runtime\\*.o 2>$(NULLDEV)
