@@ -6,12 +6,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HBCON.cpp">
+    <ClCompile Include="HBClient.cpp">
       <Filter>conn</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HBCON.h">
+    <ClInclude Include="HBClient.h">
+      <Filter>conn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\HBDefs.h">
       <Filter>conn</Filter>
     </ClInclude>
   </ItemGroup>

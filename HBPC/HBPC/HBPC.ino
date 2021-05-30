@@ -7,12 +7,18 @@
 #include "utils.h"
 #include "SN74HC595.h"
 #include "AT28C256.h"
+#include "..\common\HBDefs.h"
+#include <simpletimer.h>
+
 
 SN74HC595 sreg(A0, A1, A2, A3);
 
 AT28C256 eeprom(&sreg, A4, PIN2);
 
 #define x 0x100
+
+SimpleTimer timer;
+
 
 
 void write_buff(uint8_t* data, uint16_t size, uint16_t addr)
@@ -21,12 +27,12 @@ void write_buff(uint8_t* data, uint16_t size, uint16_t addr)
 	int errs[100];
 	int errcnt = 0;
 
-	for (int i = 0; i < size; i++)
+	for (uint16_t i = 0; i < size; i++)
 	{
 		eeprom.Write(addr + i, data[i]);
 	}
 
-	for (int i = 0; i < size; i++)
+	for (uint16_t i = 0; i < size; i++)
 	{
 		if (eeprom.Read(addr + i) != data[i])
 		{
@@ -75,19 +81,52 @@ void test()
 	}
 }
 
+void clock()
+{
+	digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+}
+
 void setup() 
 {
 	Serial.begin(9600);
 	delay(1000);
 
-	sreg.EnableOutput(true);
+	//sreg.EnableOutput(true);
 	Serial.println();
-	prg_dump();
+	//prg_dump();
 	//test();
+	timer.setInterval(1000);
+	pinMode(LED_BUILTIN, OUTPUT);
 }
+
+
 
 // the loop function runs over and over again until power down or reset
 void loop() 
 {
+	if (timer.isReady())
+	{
+		clock();
+		timer.reset();
+	}
+	//Serial.print("OK\n");
+	
+}
 
+void serialEvent() 
+{
+	while (Serial.available())
+	{
+		
+		char inChar = (char)Serial.read();
+		switch (inChar)
+		{
+			case (char)HBCCmd::PING:
+			{
+				printf("pong\n");
+			};
+		default:
+			break;
+		}
+	}
 }
