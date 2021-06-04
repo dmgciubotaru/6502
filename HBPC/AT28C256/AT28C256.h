@@ -8,6 +8,9 @@ class AT28C256
 public:
 	AT28C256(SN74HC595* address, uint8_t rw, uint8_t data);
 
+	void Enable();
+	void Disable();
+
 	uint8_t Read(uint16_t address);
 	void Write(uint16_t address, uint8_t data);
 private:

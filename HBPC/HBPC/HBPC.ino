@@ -5,128 +5,88 @@
 */
 
 #include "utils.h"
-#include "SN74HC595.h"
-#include "AT28C256.h"
-#include "..\common\HBDefs.h"
-#include <simpletimer.h>
+#include "HBCtl.h"
+#include "HBServer.h"
 
 
-SN74HC595 sreg(A0, A1, A2, A3);
+HBCTL hbCtl;
+HBServer& hbServ = HBServer::GetInstance();
 
-AT28C256 eeprom(&sreg, A4, PIN2);
+#define MAX_RETRY_READ 5000
 
-#define x 0x100
-
-SimpleTimer timer;
-
-
-
-void write_buff(uint8_t* data, uint16_t size, uint16_t addr)
-{
-
-	int errs[100];
-	int errcnt = 0;
-
-	for (uint16_t i = 0; i < size; i++)
-	{
-		eeprom.Write(addr + i, data[i]);
-	}
-
-	for (uint16_t i = 0; i < size; i++)
-	{
-		if (eeprom.Read(addr + i) != data[i])
-		{
-			errs[errcnt++] = i + addr;
-		}
-	}
-
-	printf("%d errors\n", errcnt);
-	for (int i = 0; i < errcnt; i++)
-	{
-		printf("Error on 0x%04x\n", errs[i]);
-	}
-}
-
-void prg_dump()
-{
-	printf("Programming\n");
-	uint8_t rst[] = { 0x00, 0x80, 0x00, 0x80, 0x00, 0x80};
-	write_buff(rst, 6, 0xFFFA);
-	
-	uint8_t prg[] = { 0x4c, 0x00, 0x80 };
-	write_buff(prg, 3, 0x8000);
-}
-
-void test()
-{
-	int errs[100];
-	int errcnt = 0;
-
-	for (int16_t i = 0; i < x; i++)
-	{
-		eeprom.Write(0xfe00 + i, i);
-	}
-
-	for (int16_t i = 0; i < x; i++)
-	{
-		if (eeprom.Read(0xFe00 + i) != i)
-		{
-			errs[errcnt++] = i + 0xFe00;
-		}
-	}
-	printf("%d errors\n", errcnt);
-	for (int i = 0; i < errcnt; i++)
-	{
-		printf("Error on 0x%04x\n", errs[i]);
-	}
-}
-
-void clock()
-{
-	digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-}
 
 void setup() 
 {
 	Serial.begin(9600);
 	delay(1000);
-
-	//sreg.EnableOutput(true);
-	Serial.println();
-	//prg_dump();
-	//test();
-	timer.setInterval(1000);
-	pinMode(LED_BUILTIN, OUTPUT);
+	printf("HBPC ready!\n");
 }
 
-
-
-// the loop function runs over and over again until power down or reset
 void loop() 
 {
-	if (timer.isReady())
-	{
-		clock();
-		timer.reset();
-	}
-	//Serial.print("OK\n");
-	
+	hbCtl.Loop();
 }
+
 
 void serialEvent() 
 {
 	while (Serial.available())
 	{
-		
-		char inChar = (char)Serial.read();
-		switch (inChar)
+		char c;
+		HBCCmd cmd;
+		hbServ.RecvData(&c, 1);
+		cmd = HBCCmd(c);
+		switch (cmd)
 		{
-			case (char)HBCCmd::PING:
+			case HBCCmd::PING:
 			{
-				printf("pong\n");
+				hbServ.SendCode(HBCRet::OK);
+				break;
 			};
-		default:
-			break;
+			case HBCCmd::DBG:
+			{
+				uint8_t enabled;
+				hbServ.RecvData(&enabled, 1);
+				hbServ.EnableDebug(enabled);
+				printf("Dbg %d\n", enabled);
+				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
+			case HBCCmd::RESET:
+			{
+				hbCtl.Reset();
+				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
+			case HBCCmd::CLOCK:
+			{
+				uint16_t ms;
+				hbServ.RecvData(&ms, 2);
+				hbCtl.Clock(ms);
+				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
+			case HBCCmd::FLASH:
+			{
+				uint16_t size;
+				uint16_t addr;
+				uint8_t data[0x100];
+
+				hbServ.RecvData(&addr, 2);
+				hbServ.RecvData(&size, 2);
+				hbServ.RecvFlashData(data, size);
+				int err = hbCtl.Flash(addr, data, size);
+
+				printf("Write @%04x > Size %02x errcnt %d\n", addr, size, err);
+				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
+
+			default:
+			{
+				printf("Invalid command %x\n", (int)cmd);
+				break;
+			}
 		}
 	}
 }

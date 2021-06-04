@@ -11,15 +11,34 @@ class HBClient
 public:
 	HBClient(std::string port);
 	void Ping();
-	void Clock();
+	void Dbg(bool enalbed);
+	void Step();
+	void Reset();
+	void Clock(uint16_t ms);
+	void Flash(const std::string& path);
 
 private:
 	HANDLE m_conn;
 	HANDLE m_hRecvTh;
+	HANDLE m_evAck;
 	std::atomic<bool> m_run;
+	std::atomic<HBCRet> m_ackCode;
+
+	void SendFlashData(uint16_t addr, uint8_t* data, uint16_t size);
 
 	static DWORD WINAPI RecvLoopProxy(void *ctx);
 	void RecvLoop();
-	
-	void SendData(HBCCmd cmd, void* data = NULL, int size = 0);
+	void RecvData(uint8_t* data, size_t size);
+
+	void SendData(void *data, size_t size);
+	template <typename T>
+	void SendData(T data)
+	{
+		SendData(&data, sizeof(data));
+	}
+
+	HBCRet GetCode();
+	std::string GetCodeText(HBCRet code);
+
 };
+

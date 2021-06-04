@@ -13,11 +13,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utils", "Utils\Utils.vcxite
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HBCMD", "HBCMD\HBCMD.vcxproj", "{DD1FF39C-80D8-47D5-9C30-DBB4B568B560}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{80EBFD7D-90EA-476D-BCC3-125133104A88}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HBCTL", "HBCTL\HBCTL.vcxitems", "{96288953-87D6-4EB1-9FD6-F487A4DE7150}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HBServer", "HBServer\HBServer.vcxitems", "{743976CB-DC07-4337-A096-6F454729A737}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		HBServer\HBServer.vcxitems*{743976cb-dc07-4337-a096-6f454729a737}*SharedItemsImports = 9
 		AT28C256\AT28C256.vcxitems*{85fc9f95-00d4-4f96-8989-f7c0527fee59}*SharedItemsImports = 9
+		HBCTL\HBCTL.vcxitems*{96288953-87d6-4eb1-9fd6-f487a4de7150}*SharedItemsImports = 9
 		SN74HC595\SN74HC595.vcxitems*{b714a97e-ce10-484a-a873-93b019b6d131}*SharedItemsImports = 9
 		AT28C256\AT28C256.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		HBCTL\HBCTL.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		HBServer\HBServer.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		SN74HC595\SN74HC595.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Utils\Utils.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Utils\Utils.vcxitems*{f9ce42ea-d5c4-4f95-b127-8cf93eedfd86}*SharedItemsImports = 9
@@ -30,8 +40,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x64.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x64.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
@@ -46,6 +56,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B714A97E-CE10-484A-A873-93B019B6D131} = {80EBFD7D-90EA-476D-BCC3-125133104A88}
+		{85FC9F95-00D4-4F96-8989-F7C0527FEE59} = {80EBFD7D-90EA-476D-BCC3-125133104A88}
+		{F9CE42EA-D5C4-4F95-B127-8CF93EEDFD86} = {80EBFD7D-90EA-476D-BCC3-125133104A88}
+		{96288953-87D6-4EB1-9FD6-F487A4DE7150} = {80EBFD7D-90EA-476D-BCC3-125133104A88}
+		{743976CB-DC07-4337-A096-6F454729A737} = {80EBFD7D-90EA-476D-BCC3-125133104A88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E25698BC-E400-4C93-B7FA-30B63BCFC425}

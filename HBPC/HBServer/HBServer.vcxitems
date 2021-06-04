@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{743976cb-dc07-4337-a096-6f454729a737}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HBServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HBServer.h" />
+  </ItemGroup>
+</Project>

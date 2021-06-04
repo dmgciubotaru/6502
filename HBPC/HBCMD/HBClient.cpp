@@ -19,16 +19,81 @@ HBClient::HBClient(std::string port)
 	{
 		throw "Cannot create thread";
 	}
+
+	m_evAck = CreateEvent(NULL, FALSE, FALSE, NULL);
 }
 
 void HBClient::Ping()
 {
 	SendData(HBCCmd::PING);
+	printf("%s\n",GetCodeText(GetCode()).c_str());
 }
 
-void HBClient::Clock()
+void HBClient::Dbg(bool enalbed)
+{
+	SendData(HBCCmd::DBG);
+	SendData((uint8_t)enalbed);
+	printf("%s\n", GetCodeText(GetCode()).c_str());
+}
+
+void HBClient::Step()
+{
+	SendData(HBCCmd::STEP);
+}
+
+void HBClient::Reset()
+{
+	SendData(HBCCmd::RESET);
+	printf("%s\n", GetCodeText(GetCode()).c_str());
+}
+
+void HBClient::Clock(uint16_t ms)
 {
 	SendData(HBCCmd::CLOCK);
+	SendData(ms);
+	printf("%s\n", GetCodeText(GetCode()).c_str());
+}
+
+void HBClient::Flash(const std::string& path1)
+{
+	std::string path = R"(C:\work\6502\HBOS\main)";
+	HANDLE f = CreateFileA(path.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, NULL, NULL);
+	DWORD br;
+	uint8_t data[0x100];
+
+	ReadFile(f, data, 0x100, &br, NULL);
+	SendFlashData(0x8000 , data, 0x10);
+	
+
+	SetFilePointer(f, 0x7f00, NULL, FILE_BEGIN);
+	ReadFile(f, data, 0x100, &br, NULL);
+	//SendFlashData(0xFF00 , data, 0x100);
+	
+}
+
+void HBClient::SendFlashData(uint16_t addr, uint8_t* data, uint16_t size)
+{
+	
+	ResetEvent(m_evAck);
+
+	SendData(HBCCmd::FLASH);
+	SendData(addr);
+	SendData(size);
+
+	size_t pos = 0;
+
+	while (pos < size)
+	{
+		HBCRet code = GetCode();
+		int inc = min(size - pos, 32);
+		if (code != HBCRet::NEXT)
+		{
+			throw "Response error: " + GetCodeText(code);
+		}
+		SendData(&data[pos], inc);
+		pos += inc;
+	}
+	printf("%s\n", GetCodeText(GetCode()).c_str());
 }
 
 DWORD HBClient::RecvLoopProxy(void* ctx)
@@ -37,47 +102,102 @@ DWORD HBClient::RecvLoopProxy(void* ctx)
 	return 0;
 }
 
-void HBClient::RecvLoop()
+void HBClient::RecvData(uint8_t* data, size_t size)
 {
-	while (m_run.load())
+	DWORD br;
+	size_t pos = 0;
+
+	while (pos < size)
 	{
-		char data[100];
-		int pos = 0;
-		DWORD br;
-		
-		while (1)
+		if (ReadFile(m_conn, &data[pos], size - pos, &br, NULL) == 0)
 		{
-			if (ReadFile(m_conn, &data[pos], 1, &br, NULL) == 0)
-			{
-				throw "COM read error";
-			}
-
-			if (br == 1)
-			{
-
-				if (data[pos] == '\n')
-				{
-					data[pos] = 0x00;
-					break;
-				}
-				pos++;
-			}
+			throw "COM read error";
 		}
 
-		printf("< %s\n", data);
-		
+		pos += br;
 	}
 }
 
-void HBClient::SendData(HBCCmd cmd, void* data, int size)
+void HBClient::SendData(void* data, size_t size)
 {
 	DWORD bw;
 
-	WriteFile(m_conn, &cmd, sizeof(HBCCmd), &bw, NULL);
-	if (size)
+	WriteFile(m_conn, data, size, &bw, NULL);
+	if (bw != size)
 	{
-		WriteFile(m_conn, data, size, &bw, NULL);
-		FlushFileBuffers(m_conn);
+		throw "COM write failed";
+	}
+	FlushFileBuffers(m_conn);
+}
+
+HBCRet  HBClient::GetCode()
+{
+	if (WaitForSingleObject(m_evAck, 1000 * 5) != WAIT_OBJECT_0)
+	{
+		throw "Wait error";
+	}
+	return m_ackCode.load();
+}
+
+std::string HBClient::GetCodeText(HBCRet code)
+{
+	switch (code)
+	{
+	case HBCRet::OK:
+		return "OK";
+	default:
+		return "Invalid code" ;
 	}
 }
+
+void HBClient::RecvLoop()
+{
+	uint8_t data[100];
+	int pos = 0;
+
+	while (m_run.load())
+	{
+		
+		while (1)
+		{
+			RecvData(&data[pos], 1);
+
+			switch (data[pos])
+			{
+			case HBCMD_ACK:
+			{
+				uint8_t code;
+				RecvData(&code, 1);
+				m_ackCode.store((HBCRet)code);
+				SetEvent(m_evAck);
+				break;
+			}
+			case '\n':
+			{
+				data[pos] = 0x00;
+				printf("< %s\n", data);
+				pos = 0;
+				break;
+			}
+			default:
+			{
+				pos++;
+			}
+
+			}
+		}		
+	}
+}
+//
+//void HBClient::SendData(void* data, int size)
+//{
+//	DWORD bw;
+//
+//	WriteFile(m_conn, data, size, &bw, NULL);
+//	if (bw != size)
+//	{
+//		throw "COM write failed";
+//	}
+//	FlushFileBuffers(m_conn);
+//}
 
