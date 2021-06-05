@@ -7,11 +7,12 @@
 
 static HBServer& hbServ = HBServer::GetInstance();
 
+int PIN_DATA[] = { A0, A1, A2, A3, A4, A5, 11, 12 };
+
 AT28C256::AT28C256(SN74HC595* address, uint8_t rw, uint8_t data)
 {
 	m_address = address;
 	m_rw = rw;
-	m_data = data;
 
 	pinMode(m_rw, OUTPUT);
 	digitalWrite(m_rw, HIGH);
@@ -70,7 +71,7 @@ void AT28C256::SetDataDir(uint8_t dir)
 {
 	for (int i = 0; i < 8; i++)
 	{
-		pinMode(m_data + i, dir);
+		pinMode(PIN_DATA[i], dir);
 	}
 }
 
@@ -79,7 +80,7 @@ uint8_t AT28C256::GetByte()
 	uint8_t data = 0;
 	for (int i = 0; i < 8; i++)
 	{
-		data |= digitalRead(m_data + i) << i;
+		data |= digitalRead(PIN_DATA[i]) << i;
 	}
 	return data;
 }
@@ -88,6 +89,6 @@ void AT28C256::SetByte(uint8_t data)
 {
 	for (int i = 0; i < 8; i++)
 	{
-		digitalWrite(m_data + i, !!(data & (1 << i)));
+		digitalWrite(PIN_DATA[i], !!(data & (1 << i)));
 	}
 }

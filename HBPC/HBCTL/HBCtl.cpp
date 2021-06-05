@@ -60,9 +60,12 @@ int HBCTL::Flash(uint16_t addr, uint8_t* data, uint16_t size)
 
 	for (uint16_t i = 0; i < size; i++)
 	{
-		if (m_rom.Read(addr + i) != data[i])
+		uint8_t read = m_rom.Read(addr + i);
+		if (read != data[i])
 		{
 			errcnt++;
+			printf("Error @%04x [%02x] > [%02x]", addr + 1, data[i], read);
+			delay(100);
 			//errs[errcnt++] = i + addr;
 		}
 	}

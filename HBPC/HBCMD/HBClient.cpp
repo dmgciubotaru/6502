@@ -69,12 +69,12 @@ void HBClient::Flash(const std::string& path1)
 	uint8_t data[0x100];
 
 	ReadFile(f, data, 0x100, &br, NULL);
-	SendFlashData(0x8000 , data, 0x10);
+	SendFlashData(0x8000 , data, 0x100);
 	
 
 	SetFilePointer(f, 0x7f00, NULL, FILE_BEGIN);
 	ReadFile(f, data, 0x100, &br, NULL);
-	//SendFlashData(0xFF00 , data, 0x100);
+	SendFlashData(0xFF00 , data, 0x100);
 	
 }
 
@@ -100,7 +100,7 @@ void HBClient::SendFlashData(uint16_t addr, uint8_t* data, uint16_t size)
 		SendData(&data[pos], inc);
 		pos += inc;
 	}
-	printf("%s\n", GetCodeText(GetCode()).c_str());
+	printf("%s\n", GetCodeText(GetCode(20)).c_str());
 }
 
 DWORD HBClient::RecvLoopProxy(void* ctx)
@@ -118,7 +118,7 @@ void HBClient::RecvData(uint8_t* data, size_t size)
 	{
 		if (ReadFile(m_conn, &data[pos], size - pos, &br, NULL) == 0)
 		{
-			throw "COM read error";
+			//throw "COM read error";
 		}
 
 		pos += br;
@@ -137,9 +137,9 @@ void HBClient::SendData(void* data, size_t size)
 	FlushFileBuffers(m_conn);
 }
 
-HBCRet  HBClient::GetCode()
+HBCRet  HBClient::GetCode(int timeout)
 {
-	if (WaitForSingleObject(m_evAck, 1000 * 5) != WAIT_OBJECT_0)
+	if (WaitForSingleObject(m_evAck, 1000 * timeout) != WAIT_OBJECT_0)
 	{
 		throw "Wait error";
 	}
