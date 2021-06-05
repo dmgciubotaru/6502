@@ -78,6 +78,13 @@ void HBClient::Flash(const std::string& path1)
 	
 }
 
+void HBClient::Diag(HBCDiag type)
+{
+	SendData(HBCCmd::DIAG);
+	SendData(type);
+	//printf("%s\n", GetCodeText(GetCode(100)).c_str());
+}
+
 void HBClient::SendFlashData(uint16_t addr, uint8_t* data, uint16_t size)
 {
 	

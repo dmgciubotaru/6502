@@ -23,6 +23,13 @@ enum class HBCCmd : uint8_t
 	RESET,
 	CLOCK,
 	FLASH,
+	DIAG,
+};
+
+enum class HBCDiag : uint8_t
+{
+	DATA,
+	INVALID
 };
 
 

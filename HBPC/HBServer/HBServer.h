@@ -12,6 +12,7 @@ class HBServer
 public:
 	static HBServer& GetInstance();
 	void EnableDebug(bool enable);
+	bool GetDebug();
 	void RecvData(void *data, size_t size, int maxRetry = MAX_RETRY_READ);
 	void RecvFlashData(void* data, size_t size);
 	void SendCode(HBCRet code);

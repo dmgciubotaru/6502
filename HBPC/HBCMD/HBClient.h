@@ -16,6 +16,7 @@ public:
 	void Reset();
 	void Clock(uint16_t ms);
 	void Flash(const std::string& path);
+	void Diag(HBCDiag type);
 
 private:
 	bool m_dbg;

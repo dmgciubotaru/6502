@@ -52,6 +52,20 @@ void serialEvent()
 				hbServ.SendCode(HBCRet::OK);
 				break;
 			}
+			case HBCCmd::DIAG:
+			{
+				bool dbg;
+				HBCDiag type;
+				hbServ.RecvData(&type, 1);
+				
+				dbg = hbServ.GetDebug();
+				hbServ.EnableDebug(true);
+				hbCtl.Diag(type);
+				hbServ.EnableDebug(dbg);
+
+				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
 			case HBCCmd::RESET:
 			{
 				hbCtl.Reset();
@@ -64,6 +78,11 @@ void serialEvent()
 				hbServ.RecvData(&ms, 2);
 				hbCtl.Clock(ms);
 				hbServ.SendCode(HBCRet::OK);
+				break;
+			}
+			case HBCCmd::STEP:
+			{
+				hbCtl.Step();
 				break;
 			}
 			case HBCCmd::FLASH:

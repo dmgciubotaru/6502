@@ -20,6 +20,11 @@ void HBServer::EnableDebug(bool enable)
 	m_debug = enable;
 }
 
+bool HBServer::GetDebug()
+{
+	return m_debug;
+}
+
 void HBServer::RecvData(void* data, size_t size, int maxRetry)
 {
 	int retry = 0;

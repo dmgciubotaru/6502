@@ -50,21 +50,73 @@ uint8_t AT28C256::Read(uint16_t address)
 void AT28C256::Write(uint16_t address, uint8_t data)
 {
 	digitalWrite(m_rw, LOW);
-	//hbServ.Debug("Set RW -> LOW");
+	hbServ.Debug("Set RW -> LOW");
 	m_address->SetData(address, 16);
-	//hbServ.Debug("Set Address to %04x", address);
+	hbServ.Debug("Set Address to %04x", address);
 	SetDataDir(OUTPUT);
 	SetByte(data);
 	hbServ.Debug("Set Data to %02x", data);
 	delayMicroseconds(T_WP);
 	m_address->SetData(address - 0x8000, 16);
-	//hbServ.Debug("Unset CS");
+	hbServ.Debug("Unset CS");
 	SetDataDir(INPUT);
 	m_address->SetData(0, 16);
-	//hbServ.Debug("Clear data");
+	hbServ.Debug("Clear data");
 	delayMicroseconds(T_WC);
 	digitalWrite(m_rw, HIGH);
-	//hbServ.Debug("Set RW -> High");
+	hbServ.Debug("Set RW -> High");
+}
+
+void AT28C256::DiagData()
+{
+	uint8_t data;
+	Enable();
+
+	// 0x55 -> [0x8000]
+	digitalWrite(m_rw, LOW);
+	m_address->SetData(0x8000, 16);
+	SetDataDir(OUTPUT);
+	SetByte(0x55);
+	hbServ.Debug("Set Data to 0x55");
+	delayMicroseconds(T_WP);
+	m_address->SetData(0, 16);
+	SetDataDir(INPUT);
+	m_address->SetData(0, 16);
+	delayMicroseconds(T_WC);
+	digitalWrite(m_rw, HIGH);
+
+	// 0xAA -> [0x8001]
+	digitalWrite(m_rw, LOW);
+	m_address->SetData(0x8001, 16);
+	SetDataDir(OUTPUT);
+	SetByte(0xAA);
+	hbServ.Debug("Set Data to 0xAA");
+	delayMicroseconds(T_WP);
+	m_address->SetData(1, 16);
+	SetDataDir(INPUT);
+	m_address->SetData(0, 16);
+	delayMicroseconds(T_WC);
+	digitalWrite(m_rw, HIGH);
+
+	// [0x8000] -> ?
+	SetDataDir(INPUT);
+	digitalWrite(m_rw, HIGH);
+	m_address->SetData(0x8000, 16);
+	delayMicroseconds(1);
+	data = GetByte();
+	hbServ.Debug("Recv byte [0x8000] -> ", data);
+	m_address->SetData(0, 16);
+
+	// [0x8001] -> ?
+	SetDataDir(INPUT);
+	digitalWrite(m_rw, HIGH);
+	m_address->SetData(0x8001, 16);
+	delayMicroseconds(1);
+	data = GetByte();
+	hbServ.Debug("Recv byte [0x8001] -> ", data);
+	m_address->SetData(0, 16);
+
+	Disable();
 }
 
 void AT28C256::SetDataDir(uint8_t dir)

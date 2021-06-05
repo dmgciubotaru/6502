@@ -17,6 +17,8 @@
 
 #define HBCTL_RST_DELAY 1
 
+#include "..\common\HBDefs.h"
+
 class HBCTL
 {
 public:
@@ -24,7 +26,9 @@ public:
 	void Loop();
 	void Reset();
 	void Clock(int ms);
+	void Step();
 	int Flash(uint16_t addr, uint8_t * data, uint16_t size);
+	void Diag(HBCDiag type);
 
 
 private:

@@ -14,6 +14,8 @@ public:
 
 	uint8_t Read(uint16_t address);
 	void Write(uint16_t address, uint8_t data);
+
+	void DiagData();
 private:
 	void SetDataDir(uint8_t dir);
 	uint8_t GetByte();
