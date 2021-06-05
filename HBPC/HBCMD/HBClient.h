@@ -18,6 +18,7 @@ public:
 	void Flash(const std::string& path);
 
 private:
+	bool m_dbg;
 	HANDLE m_conn;
 	HANDLE m_hRecvTh;
 	HANDLE m_evAck;

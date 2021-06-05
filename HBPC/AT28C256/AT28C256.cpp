@@ -49,21 +49,21 @@ uint8_t AT28C256::Read(uint16_t address)
 void AT28C256::Write(uint16_t address, uint8_t data)
 {
 	digitalWrite(m_rw, LOW);
-	hbServ.Debug("Set RW -> LOW");
+	//hbServ.Debug("Set RW -> LOW");
 	m_address->SetData(address, 16);
-	hbServ.Debug("Set Address to %04x", address);
+	//hbServ.Debug("Set Address to %04x", address);
 	SetDataDir(OUTPUT);
 	SetByte(data);
 	hbServ.Debug("Set Data to %02x", data);
 	delayMicroseconds(T_WP);
 	m_address->SetData(address - 0x8000, 16);
-	hbServ.Debug("Unset CS");
+	//hbServ.Debug("Unset CS");
 	SetDataDir(INPUT);
 	m_address->SetData(0, 16);
-	hbServ.Debug("Clear data");
+	//hbServ.Debug("Clear data");
 	delayMicroseconds(T_WC);
 	digitalWrite(m_rw, HIGH);
-	hbServ.Debug("Set RW -> High");
+	//hbServ.Debug("Set RW -> High");
 }
 
 void AT28C256::SetDataDir(uint8_t dir)

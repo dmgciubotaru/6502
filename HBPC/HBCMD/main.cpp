@@ -1,6 +1,6 @@
 #include "HBClient.h"
 
-HBClient conn("COM9");
+HBClient conn("COM5");
 
 void exec(const std::string& cmd)
 {

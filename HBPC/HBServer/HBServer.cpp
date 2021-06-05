@@ -20,7 +20,7 @@ void HBServer::EnableDebug(bool enable)
 	m_debug = enable;
 }
 
-void HBServer::RecvData(void* data, size_t size)
+void HBServer::RecvData(void* data, size_t size, int maxRetry)
 {
 	int retry = 0;
 	if (size > 64)
@@ -32,7 +32,7 @@ void HBServer::RecvData(void* data, size_t size)
 	{
 		delay(10);
 		retry++;
-		if (retry > MAX_RETRY_READ)
+		if ((retry > maxRetry) && (maxRetry >= 0))
 		{
 			printf("Read max retry excedded\n");
 			return;
@@ -75,6 +75,6 @@ void HBServer::Debug(const char* fmt, ...)
 		printf("\n");
 		va_end(myargs);
 		int dummy;
-		RecvData(&dummy, 1);
+		RecvData(&dummy, 1, -1);
 	}
 }

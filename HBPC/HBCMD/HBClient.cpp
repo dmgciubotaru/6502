@@ -4,6 +4,8 @@
 
 HBClient::HBClient(std::string port)
 {
+	m_dbg = false;
+
 	std::string path = R"(\\.\)" + port ;
 	m_conn = CreateFileA(path.c_str(), GENERIC_READ | GENERIC_WRITE, 
 		0, NULL, OPEN_EXISTING, NULL, NULL);
@@ -33,7 +35,12 @@ void HBClient::Dbg(bool enalbed)
 {
 	SendData(HBCCmd::DBG);
 	SendData((uint8_t)enalbed);
-	printf("%s\n", GetCodeText(GetCode()).c_str());
+	auto code = GetCode();
+	if (code == HBCRet::OK)
+	{
+		m_dbg = enalbed;
+	}
+	printf("%s\n", GetCodeText(code).c_str());
 }
 
 void HBClient::Step()
