@@ -37,7 +37,7 @@ private:
 		SendData(&data, sizeof(data));
 	}
 
-	HBCRet GetCode();
+	HBCRet GetCode(int timeout = 5);
 	std::string GetCodeText(HBCRet code);
 
 };

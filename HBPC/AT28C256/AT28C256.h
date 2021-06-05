@@ -2,6 +2,7 @@
 #define _AT28C256
 
 #include <SN74HC595.h>
+#include <Arduino.h>
 
 class AT28C256
 {
@@ -20,7 +21,6 @@ private:
 
 	SN74HC595* m_address;
 	uint8_t m_rw;
-	uint8_t m_data;
 };
 
 #endif
