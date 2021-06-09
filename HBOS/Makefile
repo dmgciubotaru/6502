@@ -1,6 +1,6 @@
 
-NULLDEV = nul:
-DEL = -del /f
+NULLDEV = /dev/null
+DEL = rm -f
 RMDIR = rmdir /s /q
 
 AR = $(CC65_HOME)/bin/ar65

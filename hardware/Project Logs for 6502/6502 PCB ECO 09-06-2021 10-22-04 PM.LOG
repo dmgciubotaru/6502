@@ -1,0 +1,13 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C1
+Change Component Designator: OldDesignator=R? NewDesignator=R1
+Change Component Designator: OldDesignator=R? NewDesignator=R2
+Change Component Designator: OldDesignator=R? NewDesignator=R3
+Change Component Designator: OldDesignator=R? NewDesignator=R4
+Change Component Designator: OldDesignator=R? NewDesignator=R5
+Change Component Designator: OldDesignator=R? NewDesignator=R6
+Change Component Designator: OldDesignator=SW? NewDesignator=SW1
+Added Member To Class: ClassName=CPU Member=Component R2 Res2
+Added Member To Class: ClassName=CPU Member=Component R3 Res2
+Added Member To Class: ClassName=CPU Member=Component R4 Res2
+Added Member To Class: ClassName=CPU Member=Component R5 Res2
+Added Member To Class: ClassName=CPU Member=Component R6 Res2
