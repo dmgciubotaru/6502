@@ -1,0 +1,115 @@
+Change Component Designator: OldDesignator=D? NewDesignator=D1
+Change Component Designator: OldDesignator=D? NewDesignator=D2
+Change Component Designator: OldDesignator=D? NewDesignator=D3
+Change Component Designator: OldDesignator=D? NewDesignator=D4
+Change Component Designator: OldDesignator=D? NewDesignator=D5
+Change Component Designator: OldDesignator=D? NewDesignator=D6
+Change Component Designator: OldDesignator=D? NewDesignator=D7
+Change Component Designator: OldDesignator=D? NewDesignator=D8
+Change Component Designator: OldDesignator=Q? NewDesignator=Q1
+Change Component Designator: OldDesignator=Q? NewDesignator=Q2
+Change Component Designator: OldDesignator=Q? NewDesignator=Q3
+Change Component Designator: OldDesignator=Q? NewDesignator=Q4
+Change Component Designator: OldDesignator=Q? NewDesignator=Q5
+Change Component Designator: OldDesignator=Q? NewDesignator=Q6
+Change Component Designator: OldDesignator=Q? NewDesignator=Q7
+Change Component Designator: OldDesignator=Q? NewDesignator=Q8
+Change Component Designator: OldDesignator=R? NewDesignator=R7
+Change Component Designator: OldDesignator=R? NewDesignator=R8
+Change Component Designator: OldDesignator=R? NewDesignator=R9
+Change Component Designator: OldDesignator=R? NewDesignator=R10
+Change Component Designator: OldDesignator=R? NewDesignator=R11
+Change Component Designator: OldDesignator=R? NewDesignator=R12
+Change Component Designator: OldDesignator=R? NewDesignator=R13
+Change Component Designator: OldDesignator=R? NewDesignator=R14
+Change Component Designator: OldDesignator=R? NewDesignator=R15
+Change Component Designator: OldDesignator=R? NewDesignator=R16
+Change Component Designator: OldDesignator=R? NewDesignator=R17
+Change Component Designator: OldDesignator=R? NewDesignator=R18
+Change Component Designator: OldDesignator=R? NewDesignator=R19
+Change Component Designator: OldDesignator=R? NewDesignator=R20
+Change Component Designator: OldDesignator=R? NewDesignator=R21
+Change Component Designator: OldDesignator=R? NewDesignator=R22
+Change Net Name : Old Net Name=NetD?_1 New Net Name=NetD5_1
+Change Net Name : Old Net Name=NetD?_2 New Net Name=NetD8_2
+Change Net Name : Old Net Name=NetQ?_2 New Net Name=NetQ6_2
+Added Pin To Net: NetName=NetD1_1 Pin=R8-1
+Added Net: Name=NetD1_1
+Added Pin To Net: NetName=NetD1_2 Pin=Q1-1
+Added Net: Name=NetD1_2
+Added Pin To Net: NetName=NetD2_1 Pin=R10-1
+Added Net: Name=NetD2_1
+Added Pin To Net: NetName=NetD2_2 Pin=Q2-1
+Added Net: Name=NetD2_2
+Added Pin To Net: NetName=NetD3_1 Pin=R12-1
+Added Net: Name=NetD3_1
+Added Pin To Net: NetName=NetD3_2 Pin=Q3-1
+Added Net: Name=NetD3_2
+Added Pin To Net: NetName=NetD4_1 Pin=R14-1
+Added Net: Name=NetD4_1
+Added Pin To Net: NetName=NetD4_2 Pin=Q4-1
+Added Net: Name=NetD4_2
+Added Pin To Net: NetName=NetD5_2 Pin=D5-2
+Added Pin To Net: NetName=NetD5_2 Pin=Q5-1
+Added Net: Name=NetD5_2
+Added Pin To Net: NetName=NetD6_1 Pin=R18-1
+Added Net: Name=NetD6_1
+Added Pin To Net: NetName=NetD6_2 Pin=Q6-1
+Added Net: Name=NetD6_2
+Added Pin To Net: NetName=NetD7_1 Pin=R20-1
+Added Net: Name=NetD7_1
+Added Pin To Net: NetName=NetD7_2 Pin=Q7-1
+Added Net: Name=NetD7_2
+Added Pin To Net: NetName=NetD8_1 Pin=D8-1
+Added Pin To Net: NetName=NetD8_1 Pin=R22-1
+Added Net: Name=NetD8_1
+Added Pin To Net: NetName=NetQ1_2 Pin=Q1-2
+Added Pin To Net: NetName=NetQ1_2 Pin=R7-2
+Added Net: Name=NetQ1_2
+Added Pin To Net: NetName=NetQ2_2 Pin=Q2-2
+Added Pin To Net: NetName=NetQ2_2 Pin=R9-2
+Added Net: Name=NetQ2_2
+Added Pin To Net: NetName=NetQ3_2 Pin=Q3-2
+Added Pin To Net: NetName=NetQ3_2 Pin=R11-2
+Added Net: Name=NetQ3_2
+Added Pin To Net: NetName=NetQ4_2 Pin=Q4-2
+Added Pin To Net: NetName=NetQ4_2 Pin=R13-2
+Added Net: Name=NetQ4_2
+Added Pin To Net: NetName=NetQ5_2 Pin=Q5-2
+Added Pin To Net: NetName=NetQ5_2 Pin=R15-2
+Added Net: Name=NetQ5_2
+Added Pin To Net: NetName=NetQ7_2 Pin=Q7-2
+Added Pin To Net: NetName=NetQ7_2 Pin=R19-2
+Added Net: Name=NetQ7_2
+Added Pin To Net: NetName=NetQ8_2 Pin=Q8-2
+Added Pin To Net: NetName=NetQ8_2 Pin=R21-2
+Added Net: Name=NetQ8_2
+Added Member To Class: ClassName=Common Member=Component D1 LED1
+Added Member To Class: ClassName=Common Member=Component D2 LED1
+Added Member To Class: ClassName=Common Member=Component D3 LED1
+Added Member To Class: ClassName=Common Member=Component D4 LED1
+Added Member To Class: ClassName=Common Member=Component D6 LED1
+Added Member To Class: ClassName=Common Member=Component D7 LED1
+Added Member To Class: ClassName=Common Member=Component D8 LED1
+Added Member To Class: ClassName=Common Member=Component Q1 BC547B
+Added Member To Class: ClassName=Common Member=Component Q3 BC547B
+Added Member To Class: ClassName=Common Member=Component Q4 BC547B
+Added Member To Class: ClassName=Common Member=Component Q5 BC547B
+Added Member To Class: ClassName=Common Member=Component Q6 BC547B
+Added Member To Class: ClassName=Common Member=Component Q7 BC547B
+Added Member To Class: ClassName=Common Member=Component Q8 BC547B
+Added Member To Class: ClassName=Common Member=Component R7 Res2
+Added Member To Class: ClassName=Common Member=Component R8 Res2
+Added Member To Class: ClassName=Common Member=Component R9 Res2
+Added Member To Class: ClassName=Common Member=Component R10 Res2
+Added Member To Class: ClassName=Common Member=Component R12 Res2
+Added Member To Class: ClassName=Common Member=Component R13 Res2
+Added Member To Class: ClassName=Common Member=Component R14 Res2
+Added Member To Class: ClassName=Common Member=Component R15 Res2
+Added Member To Class: ClassName=Common Member=Component R16 Res2
+Added Member To Class: ClassName=Common Member=Component R17 Res2
+Added Member To Class: ClassName=Common Member=Component R18 Res2
+Added Member To Class: ClassName=Common Member=Component R19 Res2
+Added Member To Class: ClassName=Common Member=Component R20 Res2
+Added Member To Class: ClassName=Common Member=Component R21 Res2
+Added Member To Class: ClassName=Common Member=Component R22 Res2

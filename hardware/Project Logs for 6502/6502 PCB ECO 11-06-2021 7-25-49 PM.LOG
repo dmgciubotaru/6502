@@ -1,0 +1,7 @@
+Removed Member From Class: ClassName=Main Member=P?
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=P? NewDesignator=P6
+Change Component Designator: OldDesignator=P? NewDesignator=P7
+Change Net Name : Old Net Name=NetP?_2 New Net Name=NetP1_2
+Added Member To Class: ClassName=Main Member=Component P1 Header 3
+Added Member To Class: ClassName=PIO Member=Component P6 Header 12

@@ -1,0 +1,99 @@
+Removed Pin From Net: NetName=NetP2_8 Pin=U7-12
+Removed Pin From Net: NetName=NetP2_7 Pin=U7-13
+Removed Pin From Net: NetName=NetP2_6 Pin=U7-14
+Removed Pin From Net: NetName=NetP2_5 Pin=U7-15
+Removed Pin From Net: NetName=NetP2_4 Pin=U7-16
+Removed Pin From Net: NetName=NetP2_3 Pin=U7-17
+Removed Pin From Net: NetName=NetP2_2 Pin=U7-18
+Removed Pin From Net: NetName=NetP3_8 Pin=U8-12
+Removed Pin From Net: NetName=NetP3_7 Pin=U8-13
+Removed Pin From Net: NetName=NetP3_6 Pin=U8-14
+Removed Pin From Net: NetName=NetP3_5 Pin=U8-15
+Removed Pin From Net: NetName=NetP3_4 Pin=U8-16
+Removed Pin From Net: NetName=NetP3_3 Pin=U8-17
+Removed Pin From Net: NetName=NetP3_2 Pin=U8-18
+Removed Pin From Net: NetName=NetP4_8 Pin=U9-12
+Removed Pin From Net: NetName=NetP4_7 Pin=U9-13
+Removed Pin From Net: NetName=NetP4_6 Pin=U9-14
+Removed Pin From Net: NetName=NetP4_5 Pin=U9-15
+Removed Pin From Net: NetName=NetP4_4 Pin=U9-16
+Removed Pin From Net: NetName=NetP4_3 Pin=U9-17
+Removed Pin From Net: NetName=NetP4_2 Pin=U9-18
+Removed Pin From Net: NetName=NetP5_8 Pin=U10-12
+Removed Pin From Net: NetName=NetP5_7 Pin=U10-13
+Removed Pin From Net: NetName=NetP5_6 Pin=U10-14
+Removed Pin From Net: NetName=NetP5_5 Pin=U10-15
+Removed Pin From Net: NetName=NetP5_4 Pin=U10-16
+Removed Pin From Net: NetName=NetP5_3 Pin=U10-17
+Removed Pin From Net: NetName=NetP5_2 Pin=U10-18
+Change Component Footprint: Designator=P2 Old Footprint=HDR1X8 New Footprint=HDR1X10
+Change Component Footprint: Designator=P3 Old Footprint=HDR1X8 New Footprint=HDR1X10
+Change Component Footprint: Designator=P4 Old Footprint=HDR1X8 New Footprint=HDR1X10
+Change Component Footprint: Designator=P5 Old Footprint=HDR1X8 New Footprint=HDR1X10
+Change Component Comment : Designator=P2 Old Comment=Header 8 New Comment=Header 10
+Change Component Comment : Designator=P3 Old Comment=Header 8 New Comment=Header 10
+Change Component Comment : Designator=P4 Old Comment=Header 8 New Comment=Header 10
+Change Component Comment : Designator=P5 Old Comment=Header 8 New Comment=Header 10
+Added Pin To Net: NetName=VCC Pin=P2-1
+Added Pin To Net: NetName=GND Pin=P2-10
+Added Pin To Net: NetName=VCC Pin=P3-1
+Added Pin To Net: NetName=GND Pin=P3-10
+Added Pin To Net: NetName=VCC Pin=P4-1
+Added Pin To Net: NetName=GND Pin=P4-10
+Added Pin To Net: NetName=VCC Pin=P5-1
+Added Pin To Net: NetName=GND Pin=P5-10
+Added Pin To Net: NetName=GND Pin=U7-10
+Added Pin To Net: NetName=NetP2_8 Pin=U7-13
+Added Pin To Net: NetName=NetP2_7 Pin=U7-14
+Added Pin To Net: NetName=NetP2_6 Pin=U7-15
+Added Pin To Net: NetName=NetP2_5 Pin=U7-16
+Added Pin To Net: NetName=NetP2_4 Pin=U7-17
+Added Pin To Net: NetName=NetP2_3 Pin=U7-18
+Added Pin To Net: NetName=NetP2_2 Pin=U7-19
+Added Pin To Net: NetName=VCC Pin=U7-20
+Added Pin To Net: NetName=GND Pin=U8-10
+Added Pin To Net: NetName=NetP3_8 Pin=U8-13
+Added Pin To Net: NetName=NetP3_7 Pin=U8-14
+Added Pin To Net: NetName=NetP3_6 Pin=U8-15
+Added Pin To Net: NetName=NetP3_5 Pin=U8-16
+Added Pin To Net: NetName=NetP3_4 Pin=U8-17
+Added Pin To Net: NetName=NetP3_3 Pin=U8-18
+Added Pin To Net: NetName=NetP3_2 Pin=U8-19
+Added Pin To Net: NetName=VCC Pin=U8-20
+Added Pin To Net: NetName=GND Pin=U9-10
+Added Pin To Net: NetName=NetP4_8 Pin=U9-13
+Added Pin To Net: NetName=NetP4_7 Pin=U9-14
+Added Pin To Net: NetName=NetP4_6 Pin=U9-15
+Added Pin To Net: NetName=NetP4_5 Pin=U9-16
+Added Pin To Net: NetName=NetP4_4 Pin=U9-17
+Added Pin To Net: NetName=NetP4_3 Pin=U9-18
+Added Pin To Net: NetName=NetP4_2 Pin=U9-19
+Added Pin To Net: NetName=VCC Pin=U9-20
+Added Pin To Net: NetName=GND Pin=U10-10
+Added Pin To Net: NetName=NetP5_8 Pin=U10-13
+Added Pin To Net: NetName=NetP5_7 Pin=U10-14
+Added Pin To Net: NetName=NetP5_6 Pin=U10-15
+Added Pin To Net: NetName=NetP5_5 Pin=U10-16
+Added Pin To Net: NetName=NetP5_4 Pin=U10-17
+Added Pin To Net: NetName=NetP5_3 Pin=U10-18
+Added Pin To Net: NetName=NetP5_2 Pin=U10-19
+Added Pin To Net: NetName=VCC Pin=U10-20
+Added Pin To Net: NetName=NetP2_9 Pin=P2-9
+Added Pin To Net: NetName=NetP2_9 Pin=U7-12
+Added Net: Name=NetP2_9
+Added Pin To Net: NetName=NetP3_9 Pin=P3-9
+Added Pin To Net: NetName=NetP3_9 Pin=U8-12
+Added Net: Name=NetP3_9
+Added Pin To Net: NetName=NetP4_9 Pin=P4-9
+Added Pin To Net: NetName=NetP4_9 Pin=U9-12
+Added Net: Name=NetP4_9
+Added Pin To Net: NetName=NetP5_9 Pin=P5-9
+Added Pin To Net: NetName=NetP5_9 Pin=U10-12
+Added Net: Name=NetP5_9
+Added Member To Class: ClassName=CPU Member=Component  W65C02
+Added Member To Class: ClassName=CPU Member=Component U6 CY25701FLXIT
+Added Room: Name=BusSelect
+Added Room: Name=CPU
+Added Room: Name=EEPROM
+Added Room: Name=PIO
+Added Room: Name=RAM
