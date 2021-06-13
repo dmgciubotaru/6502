@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=CLK Pin=U6-8
+Added Component: Designator=P8(HDR1X3)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=CLK Pin=P8-2
+Added Pin To Net: NetName=CLK_EXT Pin=P8-1
+Added Net: Name=CLK_EXT
+Added Pin To Net: NetName=NetP8_3 Pin=P8-3
+Added Pin To Net: NetName=NetP8_3 Pin=U6-8
+Added Net: Name=NetP8_3
+Added Member To Class: ClassName=Main Member=Component P8 Header 3
+Added Member To Class: ClassName=Main Member=Component U6 Quartz

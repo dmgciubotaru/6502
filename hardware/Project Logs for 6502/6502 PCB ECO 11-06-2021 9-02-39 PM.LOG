@@ -1,0 +1,5 @@
+Added Component: Designator=U6(Quartz)
+Added Pin To Net: NetName=GND Pin=U6-7
+Added Pin To Net: NetName=CLK Pin=U6-8
+Added Pin To Net: NetName=VCC Pin=U6-14
+Added Member To Class: ClassName=Main Member=Component U6 Quartz
