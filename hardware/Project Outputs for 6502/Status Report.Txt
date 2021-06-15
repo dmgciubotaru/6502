@@ -1,0 +1,12 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [6502.PrjPcb]
+   Generated File[6502.RUL]
+   Generated File[6502.EXTREP]
+   Generated File[6502.REP]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 8:25:40 PM On 13/06/2021
